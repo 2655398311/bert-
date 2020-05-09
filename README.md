@@ -145,7 +145,28 @@ loss = 0.7093687
 ```
 
 
-## 三、标签提取工具
+## 三、博主博文拆分工具
+简述：
+从数据库中获取红人信息表（d_weibo_cewebrity_info）
+从数据库中获取红人微博内容表（f_weibo_blog）
+两张表共有字段（platform_cid）
+使用信息表中拿platform_cid与内容表中取出来对应的博主的微博内容
+每个博主对应一个文件夹
+使用redis做增量
+每次读取时只获取新增到表中的红人
+
+每次拆分前会自动删除/home/chenfan/blog_floder/中的内容
+
+拆分提取命令行工具：read_cewebrity_info.py
+
+拆分结果输出路径 /home/chenfan/blog_floder
+
+拆分结束播报到指定钉钉群
+
+拆分命令：
+python3 read_cewebrity_info.py
+
+## 四、标签提取工具
 简述:
 标签提取工具是一个命令行工具，按照要求的格式把每个博主的所有博文保存在一个文件中，
 使用命令行可以对单个文件或者目录下的多个csv文件批量处理，提取出各个博主对应的热门标签；
